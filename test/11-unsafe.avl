@@ -1,0 +1,9 @@
+// RUN: %avlc %s --dump-cpp | FileCheck %s
+
+unsafe {
+    int x;
+}
+
+// CHECK: { __avl_unsafe_scope __avl_us;
+// CHECK:     int x;
+// CHECK: }

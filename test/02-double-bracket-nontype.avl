@@ -1,0 +1,6 @@
+// RUN: %avlc %s --dump-cpp | FileCheck %s
+
+[[T, int N]]
+<void> fill(T a);
+
+// CHECK: template<typename T, int N>

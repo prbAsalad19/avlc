@@ -33,3 +33,4 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 # ── Subdirectories ──────────────────────────────────────────────────────────
 add_subdirectory(lib/avl)
 add_subdirectory(tools/avlc)
+add_subdirectory(test)

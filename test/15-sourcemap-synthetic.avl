@@ -1,0 +1,6 @@
+// RUN: %avlc %s --dump-cpp --dump-sourcemap | FileCheck %s
+
+[[T]]
+<T> identity(T x);
+
+// CHECK: [synthetic]

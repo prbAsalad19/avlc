@@ -1,0 +1,5 @@
+// RUN: %avlc %s --dump-cpp | FileCheck %s
+
+<int, priority int> compute(int x);
+
+// CHECK: __avl_priority

@@ -1,0 +1,12 @@
+[[T, U]]
+<T, U> add(T a, U b) {
+    return {a, b};
+}
+
+pack Vec3 { float x, y, z; };
+
+unsafe {
+    raw_ptr(p);
+}
+
+{result, void} = compute(42);

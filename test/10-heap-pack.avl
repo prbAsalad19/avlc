@@ -1,0 +1,5 @@
+// RUN: %avlc %s --dump-cpp | FileCheck %s
+
+#heap pack BigVec { float a, b, c, d; };
+
+// CHECK: [[avl_heap]] struct BigVec

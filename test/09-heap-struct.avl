@@ -1,0 +1,7 @@
+// RUN: %avlc %s --dump-cpp | FileCheck %s
+
+#heap struct Node {
+    int val;
+};
+
+// CHECK: [[avl_heap]] struct Node

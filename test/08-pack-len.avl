@@ -1,0 +1,5 @@
+// RUN: %avlc %s --dump-cpp | FileCheck %s
+
+pack Color { uint8 r, g, b, a; };
+
+// CHECK: constexpr static std::size_t len = 4;

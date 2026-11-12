@@ -1,0 +1,11 @@
+// RUN: %avlc %s --dump-cpp | FileCheck %s
+
+pack Vec3 { float x, y, z; };
+
+// CHECK:      struct Vec3 {
+// CHECK-NEXT:   union {
+// CHECK-NEXT:     struct { float x; float y; float z; };
+// CHECK-NEXT:     float __data[3];
+// CHECK-NEXT:   };
+// CHECK-NEXT:   constexpr static std::size_t len = 3;
+// CHECK-NEXT: }

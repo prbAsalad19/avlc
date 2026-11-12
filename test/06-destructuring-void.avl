@@ -1,0 +1,7 @@
+// RUN: %avlc %s --dump-cpp | FileCheck %s
+
+{result, void} = compute(42);
+
+// CHECK:      { auto __avl_r = compute(42);
+// CHECK-NEXT:   result = __avl_r.v0;
+// CHECK-NEXT: }

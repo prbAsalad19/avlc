@@ -1,0 +1,8 @@
+// RUN: %avlc %s --dump-cpp | FileCheck %s
+
+// return {a, b} NON deve essere toccato dal destructuring pass
+<int, int> add(int a, int b) {
+    return {a, b};
+}
+
+// CHECK: return {a, b};

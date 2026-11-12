@@ -1,0 +1,9 @@
+// RUN: %avlc %s --dump-cpp | FileCheck %s
+
+unsafe {
+    raw_ptr(p);
+    into_raw(q);
+}
+
+// CHECK: __avl_raw_ptr(p)
+// CHECK: __avl_into_raw(q)

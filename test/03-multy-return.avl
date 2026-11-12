@@ -1,0 +1,5 @@
+// RUN: %avlc %s --dump-cpp | FileCheck %s
+
+<int, float, int> compute(int x);
+
+// CHECK: __avl_ret_3<int,float,int> compute(int x);

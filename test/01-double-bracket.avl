@@ -1,0 +1,6 @@
+// RUN: %avlc %s --dump-cpp | FileCheck %s
+
+[[T, U]]
+<T, U> add(T a, U b);
+
+// CHECK: template<typename T, typename U>

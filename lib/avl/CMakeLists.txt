@@ -1,6 +1,8 @@
 set(AVL_SOURCES
     Lexer.cpp
     Parser.cpp
+    PrePass.cpp
+    SourceMap.cpp
     Sema/NameResolution.cpp
     Sema/TypeCheck.cpp
     Sema/OwnershipCheck.cpp
@@ -37,7 +39,7 @@ target_link_libraries(avl
 
 target_include_directories(avl
     PUBLIC
-        ${PROJECT_SOURCE_DIR}/include
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
         ${LLVM_INCLUDE_DIRS}
         ${CLANG_INCLUDE_DIRS}
 )
