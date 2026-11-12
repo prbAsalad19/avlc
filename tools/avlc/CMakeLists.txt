@@ -1,6 +1,12 @@
 add_executable(avlc main.cpp)
 
-target_link_libraries(avlc PRIVATE avl)
+target_link_libraries(avlc PRIVATE
+  avl
+  ${LLVM_LIBS}
+  clang-cpp
+)
+
+
 
 # Ensure the executable lands in <build>/bin for convenience
 set_target_properties(avlc PROPERTIES

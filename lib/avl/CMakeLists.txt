@@ -16,14 +16,18 @@ add_library(avl STATIC ${AVL_SOURCES})
 # On Arch (and most distros) LLVM ships as a single libLLVM.so.
 # The imported target "LLVM" is always defined by LLVMConfig.cmake
 # and resolves correctly regardless of monolithic vs split layout.
-set(CLANG_LIBS
-    clangAST
-    clangBasic
-    clangLex
-    clangSema
-    clangFrontend
-    clangTooling
-)
+if(TARGET clang-cpp)
+    set(CLANG_LIBS clang-cpp)
+else()
+    set(CLANG_LIBS
+        clangAST
+        clangBasic
+        clangLex
+        clangSema
+        clangFrontend
+        clangTooling
+    )
+endif()
 
 target_link_libraries(avl
     PUBLIC
