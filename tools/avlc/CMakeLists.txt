@@ -1,23 +1,10 @@
-# ==========================================
-# AVLC EXECUTABLE CMAKE CONFIGURATION
-# ==========================================
+add_executable(avlc main.cpp)
 
-add_executable(avlc
-    main.cpp
-)
-
-# Link internal AVL library
 target_link_libraries(avlc PRIVATE avl)
 
-# Link LLVM components using LLVM's target library manager
-llvm_config(avlc USE_SHARED Core IRReader Passes)
-
-# Link Clang components using standard target names or imported libraries
-target_link_libraries(avlc PRIVATE 
-    clangAST
-    clangBasic
-    clangLex
-    clangSema
-    clangTooling
-    clangFrontend
+# Ensure the executable lands in <build>/bin for convenience
+set_target_properties(avlc PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
+
+install(TARGETS avlc RUNTIME DESTINATION bin)
