@@ -2,4 +2,4 @@
 
 #heap pack BigVec { float a, b, c, d; };
 
-// CHECK: [[avl_heap]] struct BigVec
+// CHECK: {{\[\[avl_heap\]\]}} struct BigVec

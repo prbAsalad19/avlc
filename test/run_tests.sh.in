@@ -1,0 +1,36 @@
+#!/bin/bash
+set -e
+AVLC="@CMAKE_BINARY_DIR@/bin/avlc"
+TESTS="@CMAKE_CURRENT_SOURCE_DIR@"
+PASS=0
+FAIL=0
+
+run_test() {
+    local file="$1"
+    local name=$(basename "$file")
+
+    # Estrai la RUN line
+    local runcmd=$(grep '// RUN:' "$file" | head -1 | sed 's|// RUN: ||')
+
+    # Sostituisce %s e %avlc
+    runcmd="${runcmd//%s/$file}"
+    runcmd="${runcmd//%avlc/$AVLC}"
+
+    if eval "$runcmd" > /dev/null 2>&1; then
+        echo "PASS: $name"
+        ((PASS++))
+    else
+        echo "FAIL: $name"
+        echo "  CMD: $runcmd"
+        eval "$runcmd" 2>&1 | head -5 | sed 's/^/  /'
+        ((FAIL++))
+    fi
+}
+
+for f in "$TESTS"/*.avl; do
+    [ -f "$f" ] && run_test "$f"
+done
+
+echo ""
+echo "Results: $PASS passed, $FAIL failed"
+[ $FAIL -eq 0 ]
