@@ -3,6 +3,7 @@ set(AVL_SOURCES
     Parser.cpp
     PrePass.cpp
     SourceMap.cpp
+    Sema/SemaPlugin.cpp
     Sema/NameResolution.cpp
     Sema/TypeCheck.cpp
     Sema/OwnershipCheck.cpp

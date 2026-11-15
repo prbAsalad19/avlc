@@ -33,6 +33,7 @@ struct Options {
     bool        dumpCpp       = false;
     bool        dumpSourceMap = false;
     bool        dumpTokens    = false;
+    bool        check         = false;
 };
 
 static void printUsage() {
@@ -43,6 +44,7 @@ static void printUsage() {
         "  --dump-cpp          Print the generated C++ source\n"
         "  --dump-sourcemap    Print the AVL ↔ C++ source map\n"
         "  --dump-tokens       Print the token stream (debug)\n"
+        "  --check             Runs the pre-pass and the Sema to check for errors\n"
         "\n",
         stderr);
 }
@@ -61,6 +63,7 @@ static Options parseArgs(int argc, char* argv[]) {
         if      (arg == "--dump-cpp")       opts.dumpCpp       = true;
         else if (arg == "--dump-sourcemap") opts.dumpSourceMap = true;
         else if (arg == "--dump-tokens")    opts.dumpTokens    = true;
+        else if (arg == "--check")          opts.check         = true;
         else {
             std::fprintf(stderr, "avlc: error: unknown option '%s'\n", arg.c_str());
             printUsage();
@@ -69,7 +72,7 @@ static Options parseArgs(int argc, char* argv[]) {
     }
 
     // Default: if no dump flag is set, act as --dump-cpp
-    if (!opts.dumpCpp && !opts.dumpSourceMap && !opts.dumpTokens)
+    if (!opts.dumpCpp && !opts.dumpSourceMap && !opts.dumpTokens && !opts.check)
         opts.dumpCpp = true;
 
     return opts;

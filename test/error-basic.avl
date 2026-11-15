@@ -1,0 +1,12 @@
+// test: errors that survive the pre-pass and become Clang type errors
+// every error should be reported with the AVL line number, not the C++ one
+
+// line 6 — undeclared identifier
+int x = totally_undefined;
+
+// line 9 — wrong type: cannot convert string literal to int
+int y = "hello";
+
+// line 12 — multi-return destructuring with wrong slot count
+// (pre-pass emits __avl_r.v0 and __avl_r.v1, but compute() returns one value)
+{a, b} = compute(42);
